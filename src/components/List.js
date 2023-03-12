@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { BiTrash } from 'react-icons/bi'
 
 const LIST = styled.li`
   text-decoration: "line-through";
@@ -8,6 +9,12 @@ const LIST = styled.li`
 `;
 
 export default function List({todoList, callBackList}) {
+    const [trashShown, setTrashShown] = useState(false)
+    
+    const handleTrash = (id) => {
+        let list = todoList.filter((todo) => todo.id !== id)
+        callBackList(list);
+    }
     const handleComplete = (id) => {
         let list = todoList.map((task) => {
           let item = {};
@@ -23,11 +30,13 @@ export default function List({todoList, callBackList}) {
         <LIST
           complete={todo.complete}
           id={todo.id}
-          onClick = {() => handleComplete(todo.id)}
+          //onClick = {() => handleComplete(todo.id)}
+          onMouseEnter={() => setTrashShown(true)}
+          onMouseLeave={() => setTrashShown(false)}
           style = {{textDecoration: todo.complete && "line-through"}}
           >
-            {todo.task}
-          </LIST>
+            <div >{todo.task} {trashShown && (<button onClick={() => handleTrash(todo.id)}><BiTrash /></button>)}</div>
+          </LIST> 
     );
     return <ul style={{
         display:'inline-block',
