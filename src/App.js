@@ -15,56 +15,6 @@ import {
   Flex,
 } from "@chakra-ui/react";
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    font-family: 'Golos Text', sans-serif;
-  }
-`;
-const Title = styled.h1`
-  font-size: 60px;
-  text-align: center;
-  color: navy;
-`;
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-`;
-const ListContainer = styled(Container)`
-  align-items: flex-start;
-`;
-const BottomContainer = styled(Container)`
-  flex-directions: row;
-  align-items: center;
-`;
-/*
-const Button = styled.button`
-  display: inline-block;
-  flex: 1;
-  border: none;
-  background-color: navy;
-  color: white;
-  height: 30px;
-  width: 50px;
-  border-radius: 5px;
-  cursor: pointer;
-`;*/
-/*
-const Input =  styled.input`
-  outline: none;
-  border-top-style: hidden;
-  border-right-style: hidden;
-  border-left-style: hidden;
-  border-bottom-style: hidden;
-  font-size= 1.3rem;
-`;*/
-const TaskCount = styled.span`
-  margin: 10px;
-`;
-const Tasks = styled.div`
-  text-align: center;
-`;
-
 function App() {
   const [input, setInput] = useState("");
   const [todoList, setTodoList] = useState([]);
@@ -94,19 +44,17 @@ function App() {
     <ChakraProvider>
       <Flex
         height={"100vh"}
-        flexDirection={"column"}
+        flexDirection={"row"}
         alignItems={"center"}
         justifyItems={"center"}
       >
-        <div>
+        <Box maxW="2xl" m="0 auto">
           <Heading as="h1" size="3xl" textAlign="center">
             {" "}
             To Do List{" "}
           </Heading>
           <Divider />
-          <Box margin="10px">
-            <b>Pending Tasks</b> {todoList.length}
-          </Box>
+          <b>Pending Tasks</b> {todoList.length}
           <UnorderedList>
             <ListItem>
               <Input
@@ -123,7 +71,7 @@ function App() {
           <Box display="flex" flexDirection="column" alignItems="center">
             <Button onClick={() => handleClear()}>Clear</Button>
           </Box>
-        </div>
+        </Box>
       </Flex>
     </ChakraProvider>
   );
