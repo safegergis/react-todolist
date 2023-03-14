@@ -2,6 +2,7 @@ import './App.css';
 import styled, {createGlobalStyle} from "styled-components";
 import React, { useState } from 'react';
 import List from './components/List.js'
+import {LIST} from "./components/ListItem.js"
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -18,9 +19,11 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
 `;
+const ListContainer = styled(Container)`
+  align-items: flex-start;
+`
 const BottomContainer = styled(Container)`
   flex-directions: row;
-  justify-items: center;
   align-items: center
 
 `;
@@ -40,15 +43,15 @@ const ClearButton = styled(Button)`
   align-items:center
 `;
 const Input =  styled.input`
-  border: 2px solid #000;
-  width: 200px;
-  padding: 5px;
-  border-radius: 5px;
-  margin: 5px;
+  outline: none;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  font-size= 1.3rem;
 `;
 const TaskCount = styled.span`
   margin: 10px;
-  
 `;
 const Tasks = styled.div`
   text-align: center;
@@ -57,7 +60,6 @@ const Tasks = styled.div`
 function App() {
   const [input, setInput] = useState("")
   const [todoList, setTodoList] = useState([])
-  const [completedTaskCount, setCompletedTaskCount] = useState(0)
 
   const handleClick = () => {
     if(input === ""){
@@ -88,16 +90,15 @@ const handleClear = () => {
       <Container>
           <div>
               <Title> To Do List </Title>
-              <Input value={input} onKeyPress={(e) =>{if (e.key === 'Enter') handleClick()}} onChange={e => setInput(e.target.value)} />
-              <Button onClick={() => handleClick()}>Add</Button>
             <Tasks>
               <TaskCount>
                 <b>Pending Tasks</b> {todoList.length}
               </TaskCount>
             </Tasks>
-            <div>
+            <ListContainer>
+              <LIST><Input value={input} onKeyPress={(e) =>{if (e.key === 'Enter') handleClick()}} onChange={e => setInput(e.target.value)} placeholder= "Enter your tasks here!"  /></LIST>
               <List todoList={todoList} callBackList={callBackList}/>
-            </div>
+            </ListContainer>
             <BottomContainer>
               <ClearButton onClick={() => handleClear()}>Clear</ClearButton>
               </BottomContainer>
