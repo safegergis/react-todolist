@@ -17,7 +17,7 @@ export default function TodoList({ todoList, callBackList, listType }) {
     callBackList(list);
   };
 
-  const listItems = todoList.filter((todo) => todo.list == listType)
+  const listItems = todoList.filter((todo) => todo.list === listType)
                             .map((todo) => (
     <ListItems
       todo={todo}

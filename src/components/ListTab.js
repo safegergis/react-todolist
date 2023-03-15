@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { Tabs, TabList, TabPanels, Tab, IconButton } from "@chakra-ui/react";
+import React from "react";
+import { Tabs, TabList, Tab, IconButton } from "@chakra-ui/react";
 import { BiTrash } from "react-icons/bi";
 function ListTab({callBackList, listTypes, callBackListTypes, callBackTodoList, todoList}) {
   const handleTrash = (id) => {
     if (listTypes.length > 1) {
-      let list = listTypes.filter((types) => types.id != id)
+      let list = listTypes.filter((types) => types.id !== id)
       callBackListTypes(list)
       let todo = todoList.filter((todos) => todos.list !== id)
       callBackTodoList(todo)

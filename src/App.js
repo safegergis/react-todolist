@@ -1,5 +1,4 @@
 import "./App.css";
-import styled, { createGlobalStyle } from "styled-components";
 import React, { useState } from "react";
 import TodoList from "./components/TodoList.js";
 import AddList from "./components/AddList.js";

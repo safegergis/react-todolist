@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { BiTrash } from "react-icons/bi";
-import { ListItem, Button, IconButton } from "@chakra-ui/react";
+import { ListItem, IconButton } from "@chakra-ui/react";
 
 export default function ListItems({ todo, handleTrash, handleComplete }) {
   const [trashShown, setTrashShown] = useState(false);
