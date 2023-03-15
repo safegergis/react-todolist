@@ -15,9 +15,28 @@ import {
 } from "@chakra-ui/react";
 import { GrAdd } from "react-icons/gr";
 
-export default function AddList(callBackListTypes, listTypes) {
+export default function AddList({callBackListTypes, listTypes}) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [input, setInput] = useState("");
+
+  const handleClick = () => {
+    if(input === "") {
+      alert("List name must not be empty")
+    } else {
+      const id = listTypes.length
+      callBackListTypes((prev) => [
+          ...prev,
+          {
+            name: input,
+            id: id
+          }
+        ]
+      )
+      setInput("")
+      onClose();
+    }
+
+  }
 
   return (
     <>
@@ -47,7 +66,7 @@ export default function AddList(callBackListTypes, listTypes) {
             </Center>
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme="blue" mr={3}>
+            <Button colorScheme="blue" mr={3} onClick={handleClick}>
               Add
             </Button>
             <Button variant="ghost" onClick={onClose}>

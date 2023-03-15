@@ -19,7 +19,8 @@ import {
 function App() {
   const [input, setInput] = useState("");
   const [todoList, setTodoList] = useState([]);
-  const { list, setList } = useState(0);
+  const [list, setList] = useState();
+  const [listTypes, setListTypes] = useState([{ name: "Todo List", id: list }]);
 
   const handleClick = () => {
     if (input === "") {
@@ -32,7 +33,7 @@ function App() {
           id: id,
           task: input,
           complete: false,
-          list: setList(prev),
+          list: list,
         },
       ]);
       setInput("");
@@ -41,6 +42,7 @@ function App() {
 
   const callBackTodoList = (list) => setTodoList(list);
   const callBackList = (list) => setList(list);
+  const callBackListTypes = (list) => setListTypes(list);
   const handleClear = () => {
     setTodoList(todoList.filter((t) => t.id === todoList.id));
   };
@@ -58,7 +60,7 @@ function App() {
             To Do List
           </Heading>
           <Divider />
-          <ListTab callBackList={callBackList} lists={list} />
+          <ListTab callBackList={callBackList} listTypes={listTypes} callBackListTypes={callBackListTypes} callBackTodoList={callBackTodoList} todoList={todoList} />
           <Box m={2}>
             <b>Pending Tasks</b> {todoList.length}
           </Box>
@@ -73,7 +75,7 @@ function App() {
                 placeholder="Enter your tasks here!"
               />
             </ListItem>
-            <TodoList todoList={todoList} callBackList={callBackTodoList} />
+            <TodoList todoList={todoList} callBackList={callBackTodoList} listType={list} />
           </UnorderedList>
           <Box
             m={2}
@@ -85,7 +87,7 @@ function App() {
             <Button colorScheme="blue" mr={2} onClick={() => handleClear()}>
               Clear
             </Button>
-            <AddList />
+            <AddList callBackListTypes={callBackListTypes} listTypes={listTypes} />
           </Box>
         </Box>
       </Flex>

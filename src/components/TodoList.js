@@ -1,7 +1,7 @@
 import React from "react";
 import ListItems from "./ListItem";
 
-export default function TodoList({ todoList, callBackList }) {
+export default function TodoList({ todoList, callBackList, listType }) {
   const handleTrash = (id) => {
     let list = todoList.filter((todo) => todo.id !== id);
     callBackList(list);
@@ -17,7 +17,8 @@ export default function TodoList({ todoList, callBackList }) {
     callBackList(list);
   };
 
-  const listItems = todoList.map((todo) => (
+  const listItems = todoList.filter((todo) => todo.list == listType)
+                            .map((todo) => (
     <ListItems
       todo={todo}
       handleTrash={handleTrash}
