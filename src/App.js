@@ -3,6 +3,8 @@ import styled, { createGlobalStyle } from "styled-components";
 import React, { useState } from "react";
 import TodoList from "./components/TodoList.js";
 import { LIST } from "./components/ListItem.js";
+import AddList from "./components/AddList";
+
 import {
   ChakraProvider,
   Heading,
@@ -70,6 +72,7 @@ function App() {
           </UnorderedList>
           <Box display="flex" flexDirection="column" alignItems="center">
             <Button onClick={() => handleClear()}>Clear</Button>
+            <AddList />
           </Box>
         </Box>
       </Flex>
