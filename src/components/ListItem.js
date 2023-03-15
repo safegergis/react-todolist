@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { BiTrash } from "react-icons/bi";
-import { ListItem, Button } from "@chakra-ui/react";
+import { ListItem, Button, IconButton } from "@chakra-ui/react";
 
 export default function ListItems({ todo, handleTrash, handleComplete }) {
   const [trashShown, setTrashShown] = useState(false);
 
   const listItem = (
     <ListItem
+      pr={1}
       complete={todo.complete}
       id={todo.id}
       onMouseEnter={() => setTrashShown(true)}
@@ -16,10 +17,11 @@ export default function ListItems({ todo, handleTrash, handleComplete }) {
     >
       <span onClick={() => handleComplete(todo.id)}>{todo.task}</span>
       {trashShown && (
-        <Button
+        <IconButton
+          variant="ghost"
+          aria-label="trash"
           size="xs"
-          leftIcon={<BiTrash />}
-          onClick={() => handleTrash(todo.id)}
+          icon={<BiTrash />}
         />
       )}
     </ListItem>

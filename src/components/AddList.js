@@ -10,28 +10,52 @@ import {
   Button,
   useDisclosure,
   IconButton,
-  Lorem
-} from '@chakra-ui/react'
-import { GrAdd } from "react-icons/gr"
+  Input,
+  Center,
+} from "@chakra-ui/react";
+import { GrAdd } from "react-icons/gr";
 
-export default function AddList() {
-  const [listTypes, setListTypes] = useState([])
-  const [isOpen, onOpen, OnClose] = useDisclosure()
+export default function AddList(callBackListTypes, listTypes) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [input, setInput] = useState("");
+
   return (
-  <div>
-    <IconButton icon={<GrAdd/>} onClick={onOpen}/>
-    <Modal isOpen={isOpen} OnClose={OnClose}/>
-    <ModalContent>
-      <ModalOverlay />
-        <ModalHeader>Add new list!</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>
-        </ModalBody>
-        <ModalFooter>
-        <Button colorSheme='blue' mr='3px'>Add</Button>
-        <Button variant='ghost' onClick={OnClose}>Close</Button>
-        </ModalFooter>
-      </ModalContent>
-
-  </div>);
+    <>
+      <IconButton
+        aria-label="Add list type"
+        icon={<GrAdd />}
+        onClick={onOpen}
+      />
+      <Modal isOpen={isOpen} OnClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Add new list!</ModalHeader>
+          <ModalCloseButton onClick={onClose} />
+          <ModalBody>
+            <p>
+              Here you can add different types of lists to seperate tasks, like
+              list for school, work, and other things
+            </p>
+            <Center>
+              <Input
+                m={3}
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Enter new list type here!"
+                size="md"
+              />
+            </Center>
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3}>
+              Add
+            </Button>
+            <Button variant="ghost" onClick={onClose}>
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
+  );
 }

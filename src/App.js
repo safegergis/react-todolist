@@ -2,9 +2,8 @@ import "./App.css";
 import styled, { createGlobalStyle } from "styled-components";
 import React, { useState } from "react";
 import TodoList from "./components/TodoList.js";
-import { LIST } from "./components/ListItem.js";
-import AddList from "./components/AddList";
-
+import AddList from "./components/AddList.js";
+import ListTab from "./components/ListTab";
 import {
   ChakraProvider,
   Heading,
@@ -20,6 +19,7 @@ import {
 function App() {
   const [input, setInput] = useState("");
   const [todoList, setTodoList] = useState([]);
+  const { list, setList } = useState(0);
 
   const handleClick = () => {
     if (input === "") {
@@ -32,13 +32,15 @@ function App() {
           id: id,
           task: input,
           complete: false,
+          list: setList(prev),
         },
       ]);
       setInput("");
     }
   };
 
-  const callBackList = (list) => setTodoList(list);
+  const callBackTodoList = (list) => setTodoList(list);
+  const callBackList = (list) => setList(list);
   const handleClear = () => {
     setTodoList(todoList.filter((t) => t.id === todoList.id));
   };
@@ -46,17 +48,20 @@ function App() {
     <ChakraProvider>
       <Flex
         height={"100vh"}
+        mt={24}
         flexDirection={"row"}
-        alignItems={"center"}
+        alignItems={"flex-start"}
         justifyItems={"center"}
       >
         <Box maxW="2xl" m="0 auto">
           <Heading as="h1" size="3xl" textAlign="center">
-            {" "}
-            To Do List{" "}
+            To Do List
           </Heading>
           <Divider />
-          <b>Pending Tasks</b> {todoList.length}
+          <ListTab callBackList={callBackList} lists={list} />
+          <Box m={2}>
+            <b>Pending Tasks</b> {todoList.length}
+          </Box>
           <UnorderedList>
             <ListItem>
               <Input
@@ -68,10 +73,18 @@ function App() {
                 placeholder="Enter your tasks here!"
               />
             </ListItem>
-            <TodoList todoList={todoList} callBackList={callBackList} />
+            <TodoList todoList={todoList} callBackList={callBackTodoList} />
           </UnorderedList>
-          <Box display="flex" flexDirection="column" alignItems="center">
-            <Button onClick={() => handleClear()}>Clear</Button>
+          <Box
+            m={2}
+            display="flex"
+            flexDirection="row"
+            alignContent="center"
+            justifyContent="center"
+          >
+            <Button colorScheme="blue" mr={2} onClick={() => handleClear()}>
+              Clear
+            </Button>
             <AddList />
           </Box>
         </Box>
