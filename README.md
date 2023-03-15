@@ -10,7 +10,7 @@ A to do list built in react. Comes with appealing UI and list types.
 
 <img width="683" alt="Screenshot 2023-03-15 at 2 55 35 PM" src="https://user-images.githubusercontent.com/33107228/225453167-3a0a3cbb-ebb7-4aef-959f-b837b6c097c5.png">
 
-<img width="683" alt="Screenshot 2023-03-15 at 2 55 35 PM" src="https://user-images.githubusercontent.com/33107228/225453108-ce632102-3c97-4491-ae4a-
+<img width="683" alt="Screenshot 2023-03-15 at 2 55 13 PM" src="https://user-images.githubusercontent.com/33107228/225453300-eb087843-1d98-4e57-93f0-1d1deb8df773.png">
 
 ## Installation and Setup Instructions
 
