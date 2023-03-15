@@ -23,7 +23,7 @@ export default function AddList({callBackListTypes, listTypes}) {
     if(input === "") {
       alert("List name must not be empty")
     } else {
-      const id = listTypes.length
+      const id = listTypes.length + 1
       callBackListTypes((prev) => [
           ...prev,
           {
