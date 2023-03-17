@@ -32,6 +32,8 @@ To Visit App:
 
 `localhost:3000/`  
 
+or vist the github pages at safegergis.github.io/react-todolist
+
 ## Why?
 
 This was a side project to help me get familiar with React. I wanted to make a to do list that is a small step up from the typical side project used in many react tutorials. I did this because I learn by doing and I was getting nowhere with YouTube tutorials.
