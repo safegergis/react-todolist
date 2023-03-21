@@ -1,6 +1,6 @@
 
 
-todolist
+## Todolist
 
 A to do list built in react. Comes with appealing UI and list types.
 
@@ -32,7 +32,7 @@ To Visit App:
 
 `localhost:3000/`  
 
-or vist the github pages at safegergis.github.io/react-todolist
+or vist the [Github Pages](safegergis.github.io/react-todolist)
 
 ## Why?
 
