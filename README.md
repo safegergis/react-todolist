@@ -32,7 +32,7 @@ To Visit App:
 
 `localhost:3000/`  
 
-or vist the [Github Pages](safegergis.github.io/react-todolist)
+or vist the [Github Pages](https://safegergis.github.io/react-todolist/)
 
 ## Why?
 
